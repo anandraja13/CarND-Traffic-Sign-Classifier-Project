@@ -1,18 +1,13 @@
-#**Traffic Sign Recognition** 
+# Traffic Sign Recognition
 
-Train and test a traffic sign recognition algorithm.
+This is a project submission for Term 1 of the Udacity Self-Driving Car Engineer Nanodegree program. The goal of the project is to build a traffic sign classifier.
 
----
-
-**Build a Traffic Sign Recognition Project**
-
-The goals / steps of this project are the following:
-* Load the data set (see below for links to the project data set)
+The traffic sign classifier was built in the following steps:
+* Load the data set
 * Explore, summarize and visualize the data set
 * Design, train and test a model architecture
 * Use the model to make predictions on new images
 * Analyze the softmax probabilities of the new images
-* Summarize the results with a written report
 
 
 [//]: # (Image References)
@@ -24,15 +19,13 @@ The goals / steps of this project are the following:
 [image7]: ./test_images/noentry.jpg "No Entry"
 [image8]: ./test_images/turnrightahead.jpg "Right Turn Ahead"
 
-## Rubric Points
-Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
----
 ### Data Set Summary & Exploration
 
 #### Data Set Summary
-I used the pandas library to calculate summary statistics of the traffic
-signs data set:
+(The dataset is a set of pickled files provided as part of the Udacity course. This hasn't been included with the repo because it falls above the 100 MB file limit.)
+
+I used the pandas library to calculate summary statistics of the traffic signs data set:
 
 * The size of training set is 34799
 * The size of the validation set is 4410
@@ -42,14 +35,14 @@ signs data set:
 
 #### Data Set Visualization
 
-Here is an exploratory visualization of the data set. It picks a few random images from the training set and displays it along with the respective label. The label is looked up by reading the CSV file with label names into a pandas data frame. This gives good insight into how the images appear.
+A good way to start is to visually explore the data. I pick a few random images from the training set and display them along with the respective labels. The label is read from the CSV file with label names into a pandas data frame. This gives good insights into how the images appear and what kind of variability is present.
 
 ![alt text][image1]
 
 ### Design and Test a Model Architecture
 
 #### Pre-processing
-The data pre-processing here is simple. The original data is in uint8 and lies between 0 and 255. I simply normalize the image so that it lies in the range -1 to 1 and convert it to float. Normalizing data around the mean and scaling it to be between -1 and 1 is crucial to allowing the model to work with numbers that don't lead to numerical instabilities. The normalization was wrapped into a function for convenience. 
+The data pre-processing here is simple. The original data is in uint8 and lies between 0 and 255. I simply normalize the image so that it lies in the range -1 to 1 and convert it to float. Normalizing data around the mean and scaling it to be between -1 and 1 is crucial to allowing the model to work with numbers that don't lead to numerical instabilities. 
 
 
 Additionally the data was shuffled. This is necessary because training samples arranged by labels could prevent the model from learning, because successive epochs will be overfitting to a particular traffic sign, followed by another one and so on.
@@ -95,7 +88,7 @@ Here are five German traffic signs that I found on the web:
 ![alt text][image4] ![alt text][image5] ![alt text][image6] 
 ![alt text][image7] ![alt text][image8]
 
-These images required an additional preprocessing step, i.e. resizing the images to 32x32. This was accomplished using OpenCV. The trained network made the following predictions:
+These images required an additional preprocessing step, i.e. resizing the images to 32x32. The trained network made the following predictions:
 
 | Actual Sign Names    | Predicted Sign Names   | Probability
 |:--------------------:|:----------------------:|:---------------:|
